@@ -1,50 +1,83 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getEntry, getCollection } from 'astro:content';
+const homepage = await getEntry('homepage', 'index');
+const { Content } = await homepage.render();
+
+
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1rem;
+      }
+      .container {
+        max-width: 80%;
+        margin: auto;
+        padding: 2rem;
+        background-color: #fff;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .container {
+        margin: auto;
+        padding: 2rem;
+        background-color: #fff;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .card {
+        display: flex;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background-color: #fff;
+      }
+      .card img {
+        max-width: 150px;
+        height: auto;
+        margin-right: 1rem;
+      }
+      .card-content {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <header>
+      <h1 style="color:aliceblue">Astro + Tina CMS demo session </h1>
+    </header>
+    <div class="container">
+      <h2>{homepage.data.title}</h2>
+      <p>
+        <Content />
+      </p>
+      <img
+        src={homepage.data.image}
+        alt="Sample Image"
+      />
+
+    
+    <Footer />
+  </body>
 </html>

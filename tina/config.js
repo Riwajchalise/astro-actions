@@ -23,7 +23,7 @@ export default defineConfig({
       {
         name: "post",
         label: "Posts",
-        path: "content/posts",
+        path: "src/content/blog",
         fields: [
           {
             type: "string",
@@ -40,6 +40,32 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: "homepage",
+        label: "Homepage",
+        path: "src/content/homepage",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+          {
+            type: 'image',
+            label: 'Featured image',
+            name: 'image',
+          },
+        ],
+      },
+    
     ],
   },
 });

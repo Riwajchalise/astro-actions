@@ -1,0 +1,18 @@
+<!-- ---
+import { getEntry, getEntries } from 'astro:content';
+
+const homepage = await getEntry('homepage', 'test');
+
+
+---
+
+<h1>{homepage.data.id}</h1>
+ -->
+
+---
+import { getEntry } from 'astro:content';
+const entry = await getEntry('homepage', 'index');
+const { Content } = await entry.render();
+---
+
+<Content />
