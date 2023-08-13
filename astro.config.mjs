@@ -6,6 +6,6 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 
 export default defineConfig({
-  site: 'https://Riwajchalise.github.io',
+  site: 'https://demo.rctec.co/',
   base: '/',
 })
